@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <p id="message"></p> 
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="/register.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const messageElement = document.getElementById('message');
+        if (urlParams.has('error')) {
+            messageElement.textContent = 'Invalid username or password.';
+            messageElement.style.color = '#d93025';
+        } else if (urlParams.has('success')) {
+            messageElement.textContent = 'Registration successful! Please log in.';
+            messageElement.style.color = '#1e8e3e';
+        }
+    </script>
+</body>
+</html>
